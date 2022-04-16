@@ -507,7 +507,7 @@ class MySQLProtocol(object):
                 values.append(value)
             else:
                 (packet, value) = utils.read_lc_string(packet)
-                values.append(value.decode(charset))
+                values.append(value.decode(charset,"replace").strip('\x00'))
 
         return tuple(values)
 
